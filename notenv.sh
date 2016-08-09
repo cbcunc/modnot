@@ -6,7 +6,7 @@ echo ===================
 echo Updating ipywidgets
 echo ===================
 echo
-conda update ipywidgets
+conda update -y ipywidgets
 
 echo =======================
 echo Reinstalling matplotlib
@@ -33,7 +33,7 @@ echo
 jupyter nbextension enable --py --sys-prefix widgetsnbextension
 
 echo ===========================
-echo Enabling Jupyter Dashboards
+echo Installing Jupyter Dashboards
 echo ===========================
 echo
 pip install jupyter_dashboards
@@ -43,6 +43,7 @@ echo Setting up Jupyter Dashboards
 echo =============================
 echo
 jupyter dashboards quick-setup --sys-prefix
+jupyter nbextension enable jupyter_dashboards --py --sys-prefix
 
 echo ==================
 echo Installing basemap
