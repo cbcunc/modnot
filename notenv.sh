@@ -2,12 +2,6 @@
 
 # Prepare a vanilla Anaconda 3 environment for the model notebook
 
-echo ==========================
-echo Adding conda-forge channel
-echo ==========================
-echo
-conda config --add channels conda-forge
-
 echo ===================
 echo Updating ipywidgets
 echo ===================
