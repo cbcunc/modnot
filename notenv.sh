@@ -30,7 +30,7 @@ echo ===============
 echo Enabling ipympl
 echo ===============
 echo
-jupyter nbextension enable --py widgetsnbextension
+jupyter nbextension enable --py --sys-prefix widgetsnbextension
 
 echo ===========================
 echo Enabling Jupyter Dashboards
