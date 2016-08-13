@@ -1,4 +1,3 @@
-* Copyright (c) 2016, Christopher B. Calloway
 * Copyright (c) 2016, University of North Carolina Renaissance Computing Institute
 
 These materials are licensed under:
