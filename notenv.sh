@@ -1,5 +1,7 @@
 #! /bin/bash
 
+# Copyright (c) 2016, University of North Carolina Renaissance Computing Institute
+
 # Prepare a vanilla Anaconda 3 environment for the model notebook
 
 echo ===================
