@@ -1,0 +1,23 @@
+#!/bin/bash
+if (( $# != 2 )) || [ "$1" == "-h" ] || [ "$2" == "-h" ]; then
+    USAGE=$(cat <<-END
+    Usage:
+
+        runbundle -h | dashboardname bundledir
+
+        Runs a packaged Jupyter Dashboards bundle as an application.
+
+        Where dashboardname is the name of the dashboard bundle sans zip extension,
+          and bundledir is the name of the directory to contain the expanded bundle.
+END
+)
+    echo "$USAGE"
+else
+    mkdir ${2}
+    cd ${2}
+    cp ../${1}.zip .
+    unzip ${1}.zip
+    cp `python -c "import os; import ipympl; print(os.path.join(os.path.dirname(ipympl.__file__), 'static', 'index.js'))"` jupyter-matplotlib.js
+    jupyter kernelgateway &
+    jupyter-dashboards-server --IP=0.0.0.0 --NOTEBOOKS_DIR=`pwd` --KERNEL_GATEWAY_URL=http://127.0.0.1:8888
+fi

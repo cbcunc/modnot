@@ -1,0 +1,21 @@
+#!/bin/bash
+if (( $# != 1 )) || [ "$1" == "-h" ]; then
+    USAGE=$(cat <<-END
+    Usage:
+
+        setupdashenv -h | envname
+
+        where envname is the name of the conda environment to create.
+END
+)
+    echo "$USAGE"
+else
+    conda create -y -c conda-forge -n "$1" python=3 nodejs jupyter_kernel_gateway
+    source activate "$1"
+    conda install -y -c conda-forge/label/rc -c conda-forge h5py libpng matplotlib basemap basemap-data-hires owslib ipywidgets jupyter_dashboards jupyter_cms
+    pip install jupyter_dashboards_bundlers
+    jupyter dashboards_bundlers quick-setup --sys-prefix
+    pip install ipympl
+    jupyter nbextension enable --py --sys-prefix ipympl
+    npm install -g jupyter-dashboards-server
+fi
